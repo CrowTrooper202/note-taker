@@ -15,35 +15,38 @@ app.get('/', (req, res) =>
   res.sendFile(path.join(__dirname, '/public/index.html'))
 );
 
-app.get('/api/db', (req, res) => {
+app.get('/', (req, res) =>
+  res.sendFile(path.join(__dirname, '/public/notes.html'))
+);
+
+app.get('/api/notes', (req, res) => {
     res.status(200).json(`${req.method} request received to get data base`);
   
     console.info(`${req.method} request received to get data base`);
   });
   
-  app.post('/api/bd', (req, res) => {
+  app.post('/api/notes', (req, res) => {
     console.info(`${req.method} request received to add a data base`);
   
     const { title, text, } = req.body;
   t
     if (title && text) {
-      const newReview = {
+      const newTasks = {
         title,
         text,
-        
       };
   
       fs.readFile('./db/db.json', 'utf8', (err, data) => {
         if (err) {
           console.error(err);
         } else {
-          const parsedReviews = JSON.parse(data);
+          const parsedTasks = JSON.parse(data);
   
-          parsedReviews.push(newReview);
+          parsedTasks.push(newTasks);
   
           fs.writeFile(
-            './db/reviews.json',
-            JSON.stringify(parsedReviews, null, 4),
+            './db/db.json',
+            JSON.stringify(parsedTasks, null, 4),
             (writeErr) =>
               writeErr
                 ? console.error(writeErr)
