@@ -2,6 +2,13 @@
     {
         "title": "Test Title",
         "text": "Test text"
+    },
+    {
+        "title": "MySQL Challenge",
+        "text": "Develop table and server code "
+    },
+    {
+        "title": "PMCS",
+        "text": "conduct preventative maintenance on Vics"
     }
-    
 ]

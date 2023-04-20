@@ -22,6 +22,7 @@
 
 ## Usage
 
+- ![Note taker Application Screen Shot](./public/assets/pics/Note_taker.PNG)
 - [Note Taker Application](https://quiet-inlet-16002.herokuapp.com/)
 
 
