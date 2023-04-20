@@ -29,7 +29,7 @@ app.get('/api/notes', (req, res) => {
     console.info(`${req.method} request received to add a data base`);
   
     const { title, text, } = req.body;
-  t
+  
     if (title && text) {
       const newTasks = {
         title,
