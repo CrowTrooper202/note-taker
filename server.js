@@ -1,48 +1,37 @@
 const express = require('express');
-const index = require('./public/assets/js/index')
+const fs = require('fs')
+const path = require('path')
 
 const PORT = process.env.PORT || 3001
 
 const app = express()
 
-app.get('/api/reviews', (req, res) => {
-    // Send a message to the client
+app.get('/api/db', (req, res) => {
     res.status(200).json(`${req.method} request received to get reviews`);
   
-    // Log our request to the terminal
     console.info(`${req.method} request received to get reviews`);
   });
   
-  // POST request to add a review
-  app.post('/api/reviews', (req, res) => {
-    // Log that a POST request was received
+  app.post('/api/bd', (req, res) => {
     console.info(`${req.method} request received to add a review`);
   
-    // Destructuring assignment for the items in req.body
-    const { product, review, username } = req.body;
-  
-    // If all the required properties are present
-    if (product && review && username) {
-      // Variable for the object we will save
+    const { title, text, } = req.body;
+  t
+    if (title && text) {
       const newReview = {
-        product,
-        review,
-        username,
-        review_id: uuid(),
+        title,
+        text,
+        
       };
   
-      // Obtain existing reviews
-      fs.readFile('./db/reviews.json', 'utf8', (err, data) => {
+      fs.readFile('./db/db.json', 'utf8', (err, data) => {
         if (err) {
           console.error(err);
         } else {
-          // Convert string into JSON object
           const parsedReviews = JSON.parse(data);
   
-          // Add a new review
           parsedReviews.push(newReview);
   
-          // Write updated reviews back to the file
           fs.writeFile(
             './db/reviews.json',
             JSON.stringify(parsedReviews, null, 4),
